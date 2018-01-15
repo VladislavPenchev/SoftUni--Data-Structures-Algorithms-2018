@@ -24,7 +24,7 @@ namespace StartUp
                 }
                 else if(current == ')')
                 {
-                    int prev = stack.Pop();
+                    int prev = stack.Pop(); 
                     int length = i - prev + 1;
                     string exp = expression.Substring(prev, length);
 

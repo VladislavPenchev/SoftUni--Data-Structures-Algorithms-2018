@@ -2,45 +2,80 @@
 
 public class CircularQueue<T>
 {
+    private T[] arr;
+    private int head;
+    private int tail;
+
     private const int DefaultCapacity = 4;
 
     public int Count { get; private set; }
 
+    public int Capacity { get; private set; }
+
     public CircularQueue(int capacity = DefaultCapacity)
     {
-        // TODO
-        throw new NotImplementedException();
+        this.Capacity = capacity;
+        this.head = 0;
+        this.tail = 0;
+        this.Count = 0;
+        this.arr = new T[this.Capacity];
     }
 
     public void Enqueue(T element)
     {
-        // TODO
-        throw new NotImplementedException();
+        int index = (this.tail + this.head) % this.Capacity;
+
+
+        if (this.Count >= this.Capacity)
+        {
+            this.Resize();
+        }
+        this.arr[index] = element;
+        this.tail++;
+        this.Count++;
     }
 
     private void Resize()
     {
-        // TODO
-        throw new NotImplementedException();
+        T[] newArray = new T[this.Capacity * 2];
+        this.Capacity *= 2;
+        this.CopyAllElements(newArray);
+        this.arr = newArray;
     }
 
     private void CopyAllElements(T[] newArray)
     {
-        // TODO
-        throw new NotImplementedException();
+        int startIndex = 0;
+
+        for (int i = 0; i < this.Count; i++)
+        {
+            int index = (i + this.head) % this.Capacity;
+            newArray[i] = this.arr[index];
+        }
+         
     }
 
     // Should throw InvalidOperationException if the queue is empty
     public T Dequeue()
     {
-        // TODO
-        throw new NotImplementedException();
+        if (this.Count == 0)
+        {
+            throw new InvalidOperationException();
+        }
+        T element = this.arr[this.head];
+        this.head = (this.head + 1) % this.Capacity;
+        this.Count--;
+
+        return element;
+
+
     }
 
     public T[] ToArray()
     {
-        // TODO
-        throw new NotImplementedException();
+        T[] newArray = new T[this.Capacity];
+        this.CopyAllElements(newArray);
+        return newArray;
     }
 }
 
