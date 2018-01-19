@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUpTemplate", "StartUpT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sum and Average", "Sum and Average\Sum and Average.csproj", "{D49B7B26-7D05-4810-A095-BDB13D820CF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sort Words", "ConsoleApp1\Sort Words.csproj", "{69BE6FA4-20F0-47AB-9EC5-58E8E1C8B9A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69BE6FA4-20F0-47AB-9EC5-58E8E1C8B9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69BE6FA4-20F0-47AB-9EC5-58E8E1C8B9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69BE6FA4-20F0-47AB-9EC5-58E8E1C8B9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69BE6FA4-20F0-47AB-9EC5-58E8E1C8B9A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
