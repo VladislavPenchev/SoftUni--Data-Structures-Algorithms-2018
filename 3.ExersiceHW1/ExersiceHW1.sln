@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUpTemplate", "StartUpTemplate\StartUpTemplate.csproj", "{E40A4AAB-9A51-4366-9783-574C7A05A5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sum and Average", "Sum and Average\Sum and Average.csproj", "{D49B7B26-7D05-4810-A095-BDB13D820CF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E40A4AAB-9A51-4366-9783-574C7A05A5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E40A4AAB-9A51-4366-9783-574C7A05A5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E40A4AAB-9A51-4366-9783-574C7A05A5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E40A4AAB-9A51-4366-9783-574C7A05A5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49B7B26-7D05-4810-A095-BDB13D820CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9655A174-98C8-4CF9-A44C-0BF22B6D24D0}
+	EndGlobalSection
+EndGlobal
