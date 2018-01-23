@@ -36,11 +36,32 @@ public class Tree<T>
 
     public IEnumerable<T> OrderDFS()
     {
+        //recursive implementation
+        //List<T> result = new List<T>();
+
+        //this.DFS(this, result);
+
+        //return result;
+
+
+        //interactive implementation
         List<T> result = new List<T>();
+        Stack<Tree<T>> stack = new Stack<Tree<T>>();
 
-        this.DFS(this, result);
+        stack.Push(this);
 
-        return result;
+        while (stack.Count > 0)
+        {
+            Tree<T> currentNode = stack.Pop();
+            foreach (Tree<T> child in currentNode.children)
+            {
+                stack.Push(child);
+            }
+            result.Add(currentNode.value);
+        }
+
+        return result ;
+
     }
 
     private void DFS(Tree<T> node ,List<T> result)
