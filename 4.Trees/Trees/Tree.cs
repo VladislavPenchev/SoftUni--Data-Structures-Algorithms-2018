@@ -8,22 +8,23 @@ public class Tree<T>
 
     public Tree(T value, params Tree<T>[] children)
     {
-        this.children = new List<Tree<T>>();
+        this.children = new List<Tree<T>>(children);
         this.value = value;
     }
 
     public void Print(int indent = 0)
     {
         var root = this;
-        this.PrintTree(indent,root);
+        this.PrintTree(indent,this);
     }
 
     private void PrintTree(int indent,Tree<T> node)
     {
         Console.WriteLine("{0}{1}",new string(' ',indent),node.value);
+
         foreach (var child in node.children)
         {
-            PrintTree(indent + 1, child);
+            child.Print(indent + 1);
         }
 
     }
@@ -35,9 +36,21 @@ public class Tree<T>
 
     public IEnumerable<T> OrderDFS()
     {
-        throw new NotImplementedException();
+        List<T> result = new List<T>();
+
+        this.DFS(this, result);
+
+        return result;
     }
 
+    private void DFS(Tree<T> node ,List<T> result)
+    {
+        foreach (var child in node.children)
+        {
+            this.DFS(child, result);
+        }
+        result.Add(node.value);
+    }
 
 
 

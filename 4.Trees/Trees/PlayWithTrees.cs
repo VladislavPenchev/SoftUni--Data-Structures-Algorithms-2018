@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayWithTrees
 {
@@ -14,6 +16,11 @@ public class PlayWithTrees
                 new Tree<int>(14,
                     new Tree<int>(23),
                     new Tree<int>(6)));
+
+        tree.Print();
+
+        List<int> result = tree.OrderDFS().ToList();
+
 
         Console.WriteLine("Tree (indented):");
         tree.Print();
