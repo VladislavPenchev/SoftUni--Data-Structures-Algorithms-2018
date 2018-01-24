@@ -19,7 +19,7 @@ public class PlayWithTrees
 
         tree.Print();
 
-        List<int> result = tree.OrderDFS().ToList();
+        List<int> result = tree.OrderBFS().ToList();
 
 
         Console.WriteLine("Tree (indented):");

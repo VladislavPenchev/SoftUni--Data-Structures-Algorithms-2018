@@ -77,6 +77,23 @@ public class Tree<T>
 
     public IEnumerable<T> OrderBFS()
     {
-        throw new NotImplementedException();
+        Queue<Tree<T>> queue = new Queue<Tree<T>>();
+        List<T> result = new List<T>();
+
+        queue.Enqueue(this);
+
+        while (queue.Count > 0)
+        {
+            Tree<T> current = queue.Dequeue();
+            result.Add(current.value);
+
+            foreach (Tree<T> child in current.children)
+            {
+                queue.Enqueue(child);
+            }
+        }
+
+        return result;
+
     }
 }
