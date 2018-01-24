@@ -17,9 +17,9 @@ public class PlayWithTrees
                     new Tree<int>(23),
                     new Tree<int>(6)));
 
-        tree.Print();
+        //tree.Print();
 
-        List<int> result = tree.OrderBFS().ToList();
+        //List<int> result = tree.OrderBFS().ToList();
 
 
         Console.WriteLine("Tree (indented):");

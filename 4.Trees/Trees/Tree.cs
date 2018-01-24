@@ -37,30 +37,30 @@ public class Tree<T>
     public IEnumerable<T> OrderDFS()
     {
         //recursive implementation
-        //List<T> result = new List<T>();
+        List<T> result = new List<T>();
 
-        //this.DFS(this, result);
+        this.DFS(this, result);
 
-        //return result;
+        return result;
 
 
         //interactive implementation
-        List<T> result = new List<T>();
-        Stack<Tree<T>> stack = new Stack<Tree<T>>();
+        //List<T> result = new List<T>();
+        //Stack<Tree<T>> stack = new Stack<Tree<T>>();
 
-        stack.Push(this);
+        //stack.Push(this);
 
-        while (stack.Count > 0)
-        {
-            Tree<T> currentNode = stack.Pop();
-            foreach (Tree<T> child in currentNode.children)
-            {
-                stack.Push(child);
-            }
-            result.Add(currentNode.value);
-        }
+        //while (stack.Count > 0)
+        //{
+        //    Tree<T> currentNode = stack.Pop();
+        //    foreach (Tree<T> child in currentNode.children)
+        //    {
+        //        stack.Push(child);
+        //    }
+        //    result.Add(currentNode.value);
+        //}
 
-        return result ;
+        //return result ;
 
     }
 
