@@ -35,11 +35,36 @@ public class BinaryTree<T>
 
     public void EachInOrder(Action<T> action)
     {
-        throw new NotImplementedException();
+        this.EachInOrderRecursive(this, action);
     }
+
+    private void EachInOrderRecursive(BinaryTree<T> node, Action<T> action)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        this.EachInOrderRecursive(node.Left,action);
+        action(node.Value);
+        this.EachInOrderRecursive(node.Rigth, action);
+    }
+    
 
     public void EachPostOrder(Action<T> action)
     {
-        throw new NotImplementedException();
+        this.EachPostOrder(this,action);
+    }
+
+    private void EachPostOrder(BinaryTree<T> node, Action<T> action)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        this.EachPostOrder(node.Left, action);
+        this.EachPostOrder(node.Rigth, action);
+        action(node.Value);
     }
 }

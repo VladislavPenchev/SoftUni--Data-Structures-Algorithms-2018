@@ -15,23 +15,28 @@ public class Tree<T>
     public void Print(int indent = 0)
     {
         var root = this;
-        this.PrintTree(indent,this);
+        this.PrintTree(indent,root);
     }
 
     private void PrintTree(int indent,Tree<T> node)
     {
-        Console.WriteLine("{0}{1}",new string(' ',indent),node.value);
+        Console.WriteLine($"{new string(' ',indent)}{node.value}");
 
-        foreach (var child in node.children)
+        foreach (Tree<T> child in node.children)
         {
-            child.Print(indent + 1);
+            //child.Print(indent + 1);
+            PrintTree(indent + 2,child);
         }
 
     }
 
     public void Each(Action<T> action)
     {
-        throw new NotImplementedException();
+        action(this.value);
+        foreach (var child in this.children)
+        {
+            child.Each(action);
+        }
     }
 
     public IEnumerable<T> OrderDFS()
