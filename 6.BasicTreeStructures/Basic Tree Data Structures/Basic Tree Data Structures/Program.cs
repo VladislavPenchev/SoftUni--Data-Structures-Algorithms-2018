@@ -23,7 +23,7 @@
         public static Dictionary<int, Tree<int>> tree = new Dictionary<int, Tree<int>>();
 
         static void Main(string[] args)
-        {
+         {
             int numberOfNodes = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < numberOfNodes - 1; i++)
@@ -44,7 +44,62 @@
                 tree[parent].Children.Add(tree[child]);
             }
 
+            //Console.WriteLine("Root node: {0}", FindRootNode().Value);
+            //PrintTree();
+            //FindAllLeafNodes();
+            FindMiddleNodes();
+        }
 
+        private static Tree<int> FindRootNode()
+        {
+            return tree.Values.Where(x => x.Parent == null).First();
+        }
+
+        private static void PrintTree()
+        {
+            Tree<int> root = FindRootNode();
+
+            Print(root, 0);
+        }
+
+        private static void Print(Tree<int> node, int indent = 0)
+        {
+            Console.WriteLine(new string(' ',indent) + node.Value);
+            foreach (var child in node.Children)
+            {
+                Print(child, indent + 2); 
+            }
+
+        }
+
+        private static void FindAllLeafNodes()
+        {
+            List<int> saveLeafs = new List<int>();
+
+            foreach (var leaf in tree.Values)
+            {
+                if (leaf.Children.Count == 0)
+                {
+                    saveLeafs.Add(leaf.Value);
+                }                
+            }
+
+            saveLeafs.Sort();
+            
+            
+                Console.Write("Leaf nodes: " + string.Join(" ", saveLeafs));
+                Console.WriteLine();            
+        }
+
+        private static void FindMiddleNodes()
+        {
+            List<int> middleNodes = tree.Values
+                                  .Where(x => x.Children.Count != 0 && x.Parent != null)
+                                  .Select(x => x.Value)
+                                  .OrderBy(x => x)
+                                  .ToList();
+
+            Console.WriteLine("Middle nodes: " + string.Join(" ", middleNodes));
         }
     }
 }
