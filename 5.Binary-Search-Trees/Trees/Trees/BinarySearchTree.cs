@@ -114,13 +114,26 @@ public class BinarySearchTree<T> where T : IComparable<T>
     }
 
     public IEnumerable<T> Range(T startRange, T endRange)
-    {
+    { 
         throw new NotImplementedException();
     }
 
     public void EachInOrder(Action<T> action)
     {
-        throw new NotImplementedException();
+        this.EachInOrderRecursive(this.root, action);
+    }
+
+    private void EachInOrderRecursive(Node node, Action<T> action)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        this.EachInOrderRecursive(node.Left, action);
+        action(node.Value);
+        this.EachInOrderRecursive(node.Right, action);
+
     }
 
     public class Node
@@ -155,6 +168,10 @@ public class Launcher
         BST.Insert(3);
 
         BST.Contains(4);
+
+        List<int> list = new List<int>();
+
+        BST.EachInOrder(list.Add);
 
     }
 }
