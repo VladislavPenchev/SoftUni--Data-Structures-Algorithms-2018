@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BinarySearchTree<T> where T : IComparable<T>
 {
-    public Node root;
+    private Node root;
 
     public BinarySearchTree()
     {
