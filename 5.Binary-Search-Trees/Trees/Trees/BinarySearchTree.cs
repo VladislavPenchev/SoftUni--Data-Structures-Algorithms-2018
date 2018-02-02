@@ -54,14 +54,53 @@ public class BinarySearchTree<T> where T : IComparable<T>
         {
             parent.Right = newNode;
         }
-
-
-
     }
+
+    public Node InsertRecursive(Node node, T value)
+    {
+        if (node == null)
+        {
+            node = new Node(value);
+        }
+
+        int compare = node.Value.CompareTo(value);
+
+        if (compare > 0)
+        {
+            node.Left = this.InsertRecursive(node.Left, value);
+        }
+        else if(compare < 0)
+        {
+            node.Right = this.InsertRecursive(node.Right, value); 
+        }
+
+        return node;
+    }
+
+
 
     public bool Contains(T value)
     {
-        throw new NotImplementedException();
+        Node current = this.root;
+
+        while (current != null)
+        {
+            int compare = current.Value.CompareTo(value);
+
+            if (compare > 0)
+            {
+                current = current.Left;
+            }
+            else if (compare < 0)
+            {
+                current = current.Right;
+            }
+            else
+            {
+                return true;
+            }                       
+        }
+        return false;
     }
 
     public void DeleteMin()
@@ -114,6 +153,8 @@ public class Launcher
         BST.Insert(4);
         BST.Insert(6);
         BST.Insert(3);
+
+        BST.Contains(4);
 
     }
 }
