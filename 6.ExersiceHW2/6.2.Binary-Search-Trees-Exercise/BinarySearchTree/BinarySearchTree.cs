@@ -173,8 +173,21 @@ public class BinarySearchTree<T> : IBinarySearchTree<T> where T:IComparable
 
     public int Count()
     {
-        throw new NotImplementedException();
+        Node current = this.root;
+
+        current.Count = 0;        
+
+        if (current == null)
+        {
+            return current.Count;
+        }
+
+
+                
+
+        return current.Count;
     }
+      
 
     public int Rank(T element)
     {
@@ -198,14 +211,18 @@ public class BinarySearchTree<T> : IBinarySearchTree<T> where T:IComparable
 
     private class Node
     {
+        private int count;
+
         public Node(T value)
         {
             this.Value = value;
+            this.count = Count;
         }
 
         public T Value { get; }
         public Node Left { get; set; }
         public Node Right { get; set; }
+        public int Count { get; set; }
     }
 }
 
@@ -226,7 +243,18 @@ public class Launcher
         bst.Insert(39);
         bst.Insert(45);
 
-        bst.EachInOrder(Console.WriteLine);
+        //bst.Insert(5);
+        //bst.Insert(4);
+        //bst.Insert(3);
+        //bst.Insert(6);
+
+        //bst.EachInOrder(Console.WriteLine);
+
+        bst.Count();
+
+        int nodeCount = bst.Count();
+
+        Console.WriteLine(nodeCount);
         
     }
 }
