@@ -67,17 +67,34 @@
 
         public T GetParent(T item)
         {
-            throw new NotImplementedException();
+            if (!this._nodesByValue.ContainsKey(item))
+            {
+                throw new InvalidOperationException();
+            }
+
+            var childNode = this._nodesByValue[item];
+
+            return childNode.Parent != null ? childNode.Parent.Value : default(T);
         }
 
         public bool Contains(T value)
         {
-            throw new NotImplementedException();
+            return this._nodesByValue.ContainsKey(value);
         }
 
         public IEnumerable<T> GetCommonElements(Hierarchy<T> other)
         {
-            throw new NotImplementedException();
+            List<T> collection = new List<T>();
+            
+            foreach (var kvp in this._nodesByValue)
+            {
+                if (other.Contains(kvp.Key))
+                {
+                    collection.Add(kvp.Key);
+                }
+            }
+
+            return collection;
         } 
 
         public IEnumerator<T> GetEnumerator()
