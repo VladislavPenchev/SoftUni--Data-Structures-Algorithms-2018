@@ -31,12 +31,12 @@
         {
             if (!this._nodesByValue.ContainsKey(parent))
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             if (this._nodesByValue.ContainsKey(child))
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             Node parentNode = this._nodesByValue[parent];
@@ -50,14 +50,34 @@
 
         public void Remove(T element)
         {
-            throw new NotImplementedException();
+            if (!this._nodesByValue.ContainsKey(element))
+            {
+                throw new ArgumentException();
+            }
+
+            Node current = this._nodesByValue[element];
+
+            if (current.Parent == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            foreach (var childNode in current.Children)
+            {
+                childNode.Parent = current.Parent;
+                current.Parent.Children.Add(childNode);
+            }
+
+            current.Parent.Children.Remove(current);
+            this._nodesByValue.Remove(element);
+
         }
 
         public IEnumerable<T> GetChildren(T item)
         {
             if (!this._nodesByValue.ContainsKey(item))
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             var parentNode = this._nodesByValue[item];
@@ -69,7 +89,7 @@
         {
             if (!this._nodesByValue.ContainsKey(item))
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             var childNode = this._nodesByValue[item];
@@ -85,7 +105,7 @@
         public IEnumerable<T> GetCommonElements(Hierarchy<T> other)
         {
             List<T> collection = new List<T>();
-            
+
             foreach (var kvp in this._nodesByValue)
             {
                 if (other.Contains(kvp.Key))
@@ -99,7 +119,19 @@
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            Queue<Node> queue = new Queue<Node>();
+
+            Node current = this._root;
+            queue.Enqueue(current);
+            while (queue.Count > 0)
+            {
+                current = queue.Dequeue();
+                yield return current.Value;
+                foreach (var child in current.Children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
